@@ -20,6 +20,7 @@ body {
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
+  backdrop-filter: blur(10px);
 }
 .btn {
   display: inline-block;
