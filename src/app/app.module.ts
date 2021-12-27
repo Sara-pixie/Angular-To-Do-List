@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BackgroundComponent } from './components/background/background.component';
 
 const appRoutes: Routes= [
   {path: "", component: TasksComponent},
@@ -27,7 +28,8 @@ const appRoutes: Routes= [
     TaskItemComponent,
     AddTaskComponent,
     AboutComponent,
-    FooterComponent
+    FooterComponent,
+    BackgroundComponent
   ],
   imports: [
     BrowserModule,

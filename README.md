@@ -1,5 +1,8 @@
 # AngularToDoList
 
+To start the app: ng serve <br/>
+To start the json-server: npm run server
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
 ## Development server

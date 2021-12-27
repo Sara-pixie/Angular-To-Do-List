@@ -17,6 +17,12 @@
       "text": "Food Shopping",
       "day": "Jan 7th at 12:30pm",
       "reminder": false
+    },
+    {
+      "text": "Learn Angular Canvas!",
+      "day": "Dec 26th",
+      "reminder": true,
+      "id": 4
     }
   ]
 }
