@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { fromEvent, Observable, Subscription } from "rxjs";
 
 @Component({
@@ -10,6 +10,8 @@ import { fromEvent, Observable, Subscription } from "rxjs";
 export class BackgroundComponent implements OnInit, AfterViewInit {
   innerWidth!: number;
   innerHeight!: number;
+  @Input() width: number = innerWidth;
+  @Input() height: number = innerHeight;
   resizeObservable$!: Observable<Event>;  
   resizeSubscription$!: Subscription;
   @ViewChild("myCanvas") canvasRef!: ElementRef;
@@ -31,16 +33,25 @@ export class BackgroundComponent implements OnInit, AfterViewInit {
     this.resizeSubscription$ = this.resizeObservable$.subscribe( (event: any) => {
       this.innerWidth = event.target.innerWidth;
       this.innerHeight = event.target.innerHeight;
-      //console.log("Width: ", this.innerWidth, " Height: ", this.innerHeight);
-      window.location.reload(); //This is a quick fix and another solution should be found!
+      this.width = event.target.innerWidth;
+      this.height = event.target.innerHeight;
+      //clear previous input
+      this.context.clearRect(0, 0, this.innerWidth, this.innerHeight);
+      this.circleArray = [];
+      //Redraw new canvas
+      this.backgroundStart();
     })
   }
 
   ngAfterViewInit(): void {
     this.context = this.canvasRef.nativeElement.getContext("2d")!;
+    this.backgroundStart();
+  }
+
+  private backgroundStart(){
     //make circles
     for ( var i = 0; i < this.circleNumber; i++){
-    //set variables
+      //set variables
       const minRadius = 3;
       const radius = Math.random() * 5 + minRadius;
       const x = Math.random() * (innerWidth - radius * 2) + radius;
